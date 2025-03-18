@@ -22,7 +22,7 @@ interface ImportMetaEnv {
   readonly VITE_ASGARDEO_BASE_URL: string
   readonly VITE_ASGARDEO_CLIENT_ID: string
   readonly VITE_ASGARDEO_DISABLE_TRY_SIGN_IN_SILENTLY: boolean
-  readonly VITE_ASGARDEO_SCOPE: string
+  readonly VITE_ASGARDEO_SCOPE: string[]
   readonly VITE_ASGARDEO_SIGN_IN_REDIRECT_URL: string
   readonly VITE_ASGARDEO_SIGN_OUT_REDIRECT_URL: string
 }

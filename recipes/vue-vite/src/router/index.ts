@@ -16,52 +16,58 @@
  * under the License.
  */
 
+import { createRouter, createWebHistory,type RouteLocationNormalized} from 'vue-router'
+import Home from '../views/HomeView.vue'
+import Profile from '../views/ProfileView.vue'
+import Resources from '../views/ResourcesView.vue'
+import Settings from '../views/SettingsView.vue'
+import NotFound from '../views/NotFoundView.vue'
 import { useAsgardeo } from '@asgardeo/vue'
-import {
-  createRouter,
-  createWebHistory,
-  type RouteLocationNormalized,
-  type NavigationGuardNext,
-  type Router,
-} from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
-const AboutView = (): Promise<typeof import('../views/AboutView.vue')> =>
-  import('../views/AboutView.vue')
+const requireAuth = (to: RouteLocationNormalized, from: RouteLocationNormalized, next: any) => {
+  const { state } = useAsgardeo()
 
-const router: Router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      component: HomeView,
-      name: 'home',
-      path: '/',
-    },
-    {
-      beforeEnter: (
-        to: RouteLocationNormalized,
-        from: RouteLocationNormalized,
-        next: NavigationGuardNext,
-      ): void => {
-        const { isAuthenticated } = useAsgardeo()
+  if (state.isAuthenticated) {
+    next()
+  } else {
+    next('/')
+  }
+}
 
-        isAuthenticated()
-          .then((auth: boolean) => {
-            if (auth) {
-              next()
-            } else {
-              next('/')
-            }
-          })
-          .catch(() => {
-            next('/')
-          })
-      },
-      component: AboutView,
-      name: 'about',
-      path: '/about',
-    },
-  ],
+const routes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: Home,
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile,
+    beforeEnter: requireAuth,
+  },
+  {
+    path: '/resource',
+    name: 'Resources',
+    component: Resources,
+    beforeEnter: requireAuth,
+  },
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: Settings,
+    beforeEnter: requireAuth,
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: NotFound,
+  },
+]
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
 })
 
 export default router
