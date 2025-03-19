@@ -2,45 +2,26 @@
   --primary: #ff7300;
 }
 
-body {
-  font-family: Inter;
-  overflow-y: scroll;
-  margin: 0;
-}
-
-* {
-  font-family: Inter;
-}
-
-.v-app {
+.App {
   text-align: center;
   display: flex;
   flex-direction: column;
   height: 100vh;
-  width: 100%;
+  width: 100;
 }
 
-.v-app-logo {
+.App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .v-app-logo {
-    animation: v-app-logo-spin infinite 20s linear;
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
   }
 }
 
-@keyframes v-app-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.v-header {
+.App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -51,13 +32,22 @@ body {
   color: white;
 }
 
-.v-link {
+.App-link {
   color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Custom Styles */
 
-.v-header-section {
+.App-header-section {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,11 +57,11 @@ body {
   height: 100vh;
 }
 
-.v-header-length {
+.App-header-length {
   height: 40vh;
 }
 
-.v-section {
+.App-section {
   background-color: #fcfdfd;
   display: flex;
   flex-direction: column;
@@ -80,15 +70,15 @@ body {
   color: rgb(0, 0, 0);
 }
 
-.v-section label {
+.App-section label {
   font-size: small;
 }
 
-.v-section h3 {
+.App-section h3 {
   font-weight: 450;
 }
 
-.v-header-section h4 {
+.App-header-section h4 {
   font-weight: 250;
 }
 
@@ -103,9 +93,10 @@ body {
   display: flow-root;
 }
 
+/* Apply general styling to the button container */
 .button-container {
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Centers the buttons horizontally */
 }
 
 .card-container {
@@ -119,7 +110,7 @@ body {
   justify-content: center;
 }
 
-.v-app h1 {
+.App h1 {
   font-family: Inter;
   font-weight: 300;
   font-size: xx-large;
@@ -135,9 +126,11 @@ body {
 }
 
 .label-hint {
-  font-size: 9px;
+  font-size: 12px;
+  color: gray;
 }
 
+/* Center-align the last line */
 .justified-text {
   text-align: center;
 }
@@ -216,7 +209,7 @@ td {
   margin-left: 10px;
   float: left;
   display: flex;
-  justify-content: right;
+  justify-content: right; /* Centers the columns horizontally */
   align-items: center;
 }
 
@@ -225,7 +218,7 @@ td {
   padding: 10px;
   text-align: center;
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Centers the columns horizontally */
   align-items: center;
 }
 
@@ -234,7 +227,7 @@ td {
   padding: 15px;
   text-align: left;
   display: flex;
-  justify-content: left;
+  justify-content: left; /* Centers the columns horizontally */
   align-items: center;
 }
 
@@ -242,7 +235,16 @@ td {
   width: 70px;
 }
 
-/* Column layout */
+* {
+  font-family: Inter;
+}
+
+body {
+  font-family: Inter;
+  overflow-y: scroll;
+}
+
+/* Float four columns side by side */
 .col {
   float: left;
   width: 30%;
@@ -251,6 +253,7 @@ td {
   align-items: center;
 }
 
+/* Remove extra left and right margins, due to padding */
 .row {
   display: flex;
   justify-content: center;
@@ -294,7 +297,7 @@ td {
   }
 }
 
-/* Card styles */
+/* Style the counter cards */
 .card {
   padding: 25px;
   text-align: left;
@@ -326,7 +329,7 @@ td {
 }
 
 .card:hover {
-  background-color: #f5f5f5;
+  background-color: #f5f5f5; /* Change background color on hover */
   border: 1px solid var(--primary);
 }
 
@@ -366,8 +369,7 @@ h3 {
   }
 }
 
-/* Logo images */
-.vue-logo-image {
+.react-logo-image {
   height: 100px;
   padding-bottom: 35px;
 }
@@ -415,7 +417,6 @@ h3 {
   padding-right: 15px;
 }
 
-/* Button styles */
 .btn {
   border: 2px solid var(--primary);
   background: var(--primary);
@@ -451,7 +452,6 @@ h3 {
   margin-top: 20px;
 }
 
-/* Notification styles */
 .notification {
   display: none;
   background-color: #f2f2f2;
@@ -467,7 +467,6 @@ h3 {
   display: block;
 }
 
-/* Code display */
 pre {
   background-color: #f5f5f8;
   padding: 20px;
@@ -506,6 +505,7 @@ code {
 
 .column {
   flex: 1;
+  /* padding: 10px; */
 }
 
 .button {
@@ -530,19 +530,32 @@ code {
   background-color: var(--primary);
 }
 
-/* Form styles */
+/* Styles for the input box */
 input[type='text'],
 input[type='password'] {
+  /* Set width and height */
   width: 400px;
   height: 25px;
+
+  /* Add some padding for better appearance */
   padding: 5px;
+
+  /* Border styles */
   border: 1px solid #ccc;
   border-radius: 8px;
+
+  /* Font styles */
   font-family: Arial, sans-serif;
   font-size: 14px;
+
+  /* Text color and background color */
   color: #333;
   background-color: #fff;
+
+  /* Cursor style */
   cursor: text;
+
+  /* Remove default browser appearance */
   outline: none;
 }
 
@@ -551,32 +564,39 @@ input[type='radio'] {
 }
 
 .radio input[type='radio']:checked + .radio::after {
-  accent-color: var(--primary);
-  background-color: var(--primary);
+  accent-color: var(--primary); /* Change border color for selected radio button */
+  background-color: var(--primary); /* Change background color for selected radio button */
 }
 
 select {
   width: 400px;
   height: 35px;
+
+  /* Add some padding for better appearance */
   padding: 5px;
+
+  /* Border styles */
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
+/* Hover effect */
 input:hover {
   border-color: var(--primary);
 }
 
+/* Focus effect */
 input:focus {
   border-color: var(--primary);
 }
 
+/* Style the active class, and buttons on mouse-over */
 .active,
 .btn:hover {
   border-bottom: 2px solid var(--primary);
 }
 
-.v-header-sub-section {
+.App-header-sub-section {
   background-color: #ebedf1;
   min-height: 15vh;
   display: flex;
@@ -591,39 +611,43 @@ input:focus {
   padding-bottom: 15px;
 }
 
-/* Table styles */
+/* Apply general styling to the table container */
 .table-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Horizontally center the table */
+  align-items: center; /* Vertically center the table */
 }
 
+/* Apply general styling to the table */
 table.one-column-table {
-  border-collapse: collapse;
-  width: 400px;
+  border-collapse: collapse; /* Merge cell borders */
+  width: 400px; /* Set the width of the table */
 }
 
+/* Apply styling to table cells (td) */
 table.one-column-table td {
-  padding: 5px;
-  text-align: left;
+  padding: 5px; /* Add padding inside the cells */
+  text-align: left; /* Center the content inside the cells */
 }
 
+/* Apply styling to table cells (td) */
 table.one-column-table tr {
-  padding: 15px;
-  text-align: left;
-  font-family: Arial, sans-serif;
+  padding: 15px; /* Add padding inside the cells */
+  text-align: left; /* Center the content inside the cells */
+  font-family: Arial, sans-serif; /* Choose a font for the text */
 }
 
+/* Apply general styling to the container */
 .container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Centers the columns horizontally */
+  align-items: center; /* Centers the columns vertically */
 }
 
 .container-center {
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Centers the columns horizontally */
+  align-items: center; /* Centers the columns vertically */
   flex-direction: column;
   padding: 50px;
 }
@@ -632,6 +656,7 @@ table.one-column-table tr {
   display: flex;
 }
 
+/* Apply styling to the columns */
 .container-column {
   align-items: center;
   font-size: 18px;
@@ -655,7 +680,6 @@ table.one-column-table tr {
   font-weight: 10;
 }
 
-/* Avatar dropdown */
 .avatar-dropdown {
   position: relative;
   display: inline-block;
@@ -716,12 +740,12 @@ table.one-column-table tr {
 
 .circular-image {
   border-radius: 50%;
-  object-fit: cover;
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
 }
 
 .two-column-grid {
   display: flex;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr; /* Equal width columns */
 }
 
 .column {
@@ -744,17 +768,16 @@ table.one-column-table tr {
   height: 300px;
 }
 
-/* Loader */
 .loader-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100vh; /* Adjust as needed */
 }
 
 .loader {
   border: 4px solid #f3f3f3;
-  border-top: 4px solid var(--primary);
+  border-top: var(--primary);
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -768,14 +791,4 @@ table.one-column-table tr {
   100% {
     transform: rotate(360deg);
   }
-}
-
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
 }
