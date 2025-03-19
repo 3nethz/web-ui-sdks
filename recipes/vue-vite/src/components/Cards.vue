@@ -2,16 +2,14 @@
   <div class="row">
     <div class="column" v-for="(card, index) in cards" :key="index">
       <div class="card">
-        <div class="card-container">
-          <img alt="card-icon" :src="card?.icon" class="link-logo-image-small" />
-          <h3>
-            {{ card?.title }}
-          </h3>
+        <div class="card-header">
+          <img alt="card-icon" :src="card?.icon" class="card-icon" />
+          <h3>{{ card?.title }}</h3>
         </div>
-        <p>
+        <p class="card-description">
           {{ card?.description }}
         </p>
-        <p>
+        <p class="card-link">
           <a :href="card?.link" target="_blank" rel="noopener noreferrer">Check it out</a>
         </p>
       </div>
@@ -29,14 +27,14 @@ const cards = [
     title: 'User Guide',
     description:
       'Check out our user guide and you will guide you to integrate your applications with Asgardeo.',
-    link: 'https://docs.google.com/document/d/1-yKHQgQE3-Pj5FRoBdOLf33u1Y41QWzNd3jdR6TVhIQ/edit#heading=h.mvq9fx4kf8ex',
+    link: 'https://github.com/asgardeo/web-ui-sdks/blob/main/packages/vue/README.md',
     icon: USER_GUIDE,
   },
   {
     title: 'Github Repository',
     description:
       'Lets go through the application codebase and contribute to our Asgardeo Vue Sample application.',
-    link: "TODO: Add the link to the GitHub repository",
+    link: 'https://github.com/asgardeo/web-ui-sdks',
     icon: GITHUB_ICON,
   },
   {
@@ -48,3 +46,71 @@ const cards = [
   },
 ]
 </script>
+
+<style scoped>
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.column {
+  flex: 1;
+  min-width: 300px;
+  max-width: 350px;
+  padding: 0 10px;
+}
+
+.card {
+  padding: 25px;
+  background: #ffffff;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ececec;
+  border-radius: 0.5rem;
+  margin: 20px;
+  transition:
+    background-color 0.3s,
+    border 0.3s;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.card-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.card h3 {
+  font-size: medium;
+  margin: 0;
+}
+
+.card-description {
+  font-size: 0.9em;
+  color: rgba(0, 0, 0, 0.6);
+  flex-grow: 1;
+  margin: 10px 0;
+}
+
+.card-link {
+  margin-top: auto;
+}
+
+.card a {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.card:hover {
+  background-color: #f5f5f5;
+  border: 1px solid var(--primary);
+}
+</style>

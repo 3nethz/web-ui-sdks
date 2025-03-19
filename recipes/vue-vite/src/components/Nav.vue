@@ -2,33 +2,42 @@
   <div class="navbar-section">
     <div class="navbar">
       <div class="left-panel">
-        <div @click="navigate(routesConfig.home)">
+        <div @click="routeHomeChange">
           <img alt="react-logo" :src="ASGARDEO_LOGO" class="asgardeo-logo-image-small" />
         </div>
       </div>
       <div class="center-panel" id="center-panel">
-        <a href="#/" class="nav active" id="home" @click.prevent="routeHomeChange">Home</a>
+        <a
+          href="#/"
+          :class="{ nav: true, active: isActive('Home') }"
+          id="home"
+          @click.prevent="routeHomeChange"
+        >
+          Home
+        </a>
         <a
           v-if="state.isAuthenticated"
           href="#/"
-          class="nav"
+          :class="{ nav: true, active: isActive('Resources') }"
           id="resource"
           @click.prevent="routeResourcesChange"
-          >API Call</a
         >
+          API Call
+        </a>
         <a
           v-if="isResourcesAllowed && state.isAuthenticated"
           href="#/"
-          class="nav"
+          :class="{ nav: true, active: isActive('Settings') }"
           id="setting"
           @click.prevent="routeSettingsChange"
-          >Settings</a
         >
+          Settings
+        </a>
       </div>
       <div class="right-panel">
-        <a href="#/" @click.prevent="routeProfileChange">{{
-          state.displayName ?? state.username
-        }}</a>
+        <a href="#/" :class="{ active: isActive('Profile') }" @click.prevent="routeProfileChange">
+          {{ displayName ?? username }}
+        </a>
         <div class="avatar-dropdown">
           <div class="avatar">
             <img alt="react-logo" :src="USER_LOGO" class="link-logo-image-small logo" />
@@ -36,9 +45,16 @@
           </div>
           <ul class="dropdown-menu">
             <li>
-              <a href="#/" class="nav" id="profile" @click.prevent="routeProfileChange">Profile</a>
+              <a
+                href="#/"
+                :class="{ nav: true, active: isActive('Profile') }"
+                id="profile"
+                @click.prevent="routeProfileChange"
+              >
+                Profile
+              </a>
             </li>
-            <li><a href="#/" @click.prevent="signOut">Sign out</a></li>
+            <li><a href="#/" @click.prevent="signOutHandler">Sign out</a></li>
           </ul>
         </div>
       </div>

@@ -5,9 +5,7 @@
         <div class="user-avatar">
           <img alt="user-logo" :src="USER_LOGO" />
         </div>
-        <h1 class="welcome-heading">
-          Hello <b>{{ displayName || username }}</b>
-        </h1>
+        <h1 class="welcome-heading">Hello {{ displayName || username }}</h1>
         <h4 class="welcome-subheading">Welcome to the Vue + Asgardeo demonstration app!</h4>
         <p class="welcome-description">
           From here on you can experience the basic business application use cases integrated with
@@ -53,9 +51,10 @@
 <style scoped>
 /* Container styles */
 .authenticated-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 90vh;
 }
 
 /* Authenticated user view */
@@ -64,8 +63,8 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-bottom: 2rem;
-  padding-top: 2rem; /* Add some top padding for better spacing */
+  margin-bottom: 0.5rem; /* Reduced from 2rem */
+  padding-top: 1rem;
 }
 
 .header-content {
@@ -91,10 +90,11 @@
 .welcome-heading {
   font-size: 2rem;
   margin-bottom: 0.5rem;
+  font-family: sans-serif;
 }
 
 .welcome-subheading {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: #555;
   margin-bottom: 1rem;
 }
@@ -103,12 +103,13 @@
   max-width: 800px;
   text-align: justify;
   line-height: 1.6;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem; /* Adjusted for better spacing */
 }
 
 .section-heading {
   font-size: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 0; /* Removed top margin to reduce gap */
+  margin-bottom: 0.5rem;
   text-align: center;
 }
 
@@ -121,10 +122,10 @@
 
 .login-header {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; /* Full height of the viewport */
-  padding: 2rem;
+  flex-direction: column;
+  justify-content: center; /* Centers vertically */
+  align-items: center; /* Centers horizontally */
+  min-height: 90vh;
 }
 
 .login-content {
@@ -133,7 +134,7 @@
 }
 
 .vue-logo-container {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .vue-logo {
@@ -142,7 +143,7 @@
 }
 
 .title-container {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .main-heading {
@@ -171,7 +172,7 @@
 }
 
 .app-description {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   text-align: center;
   line-height: 1.6;
   font-family: sans-serif;
@@ -182,7 +183,7 @@
   flex-direction: column; /* Change to column to stack buttons */
   align-items: center; /* Center the buttons horizontally */
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .button {
@@ -271,7 +272,6 @@ const signInHandler = () => {
   font-size: calc(10px + 2vmin);
   color: rgb(0, 0, 0);
   min-height: 100vh; /* Changed to min-height to accommodate content */
-  padding-top: 20px; /* Add some padding */
   padding-bottom: 20px;
 }
 
