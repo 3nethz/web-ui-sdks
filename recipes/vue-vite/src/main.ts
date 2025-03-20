@@ -29,12 +29,12 @@ const config: AuthVueConfig = {
   baseUrl: import.meta.env.VITE_ASGARDEO_BASE_URL,
   clientID: import.meta.env.VITE_ASGARDEO_CLIENT_ID,
   disableTrySignInSilently: false,
-  scope: ['internal_login', 'internal_user_mgt_view', 'app_roles', 'openid', 'profile'],
-  signInRedirectURL: import.meta.env.VITE_ASGARDEO_SIGN_IN_REDIRECT_URL,
-  signOutRedirectURL: import.meta.env.VITE_ASGARDEO_SIGN_OUT_REDIRECT_URL,
   resourceServerURLs: [
     'https://71fe9995-65a1-4e05-92a8-bc40749649d8-prod.e1-us-east-azure.choreoapis.dev/hmvi/demoapi/endpoint-9090-803/1.0.0/accounts',
   ],
+  scope: ['internal_login', 'internal_user_mgt_view', 'app_roles', 'openid', 'profile'],
+  signInRedirectURL: import.meta.env.VITE_ASGARDEO_SIGN_IN_REDIRECT_URL,
+  signOutRedirectURL: import.meta.env.VITE_ASGARDEO_SIGN_OUT_REDIRECT_URL,
 }
 
 app.use(router)

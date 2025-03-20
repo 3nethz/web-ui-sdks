@@ -16,15 +16,24 @@
  * under the License.
  */
 
-import { createRouter, createWebHistory,type RouteLocationNormalized} from 'vue-router'
+import { useAsgardeo } from '@asgardeo/vue'
+import {
+  createRouter,
+  createWebHistory,
+  type RouteLocationNormalized,
+  type Router,
+} from 'vue-router'
 import Home from '../views/HomeView.vue'
+import NotFound from '../views/NotFoundView.vue'
 import Profile from '../views/ProfileView.vue'
 import Resources from '../views/ResourcesView.vue'
 import Settings from '../views/SettingsView.vue'
-import NotFound from '../views/NotFoundView.vue'
-import { useAsgardeo } from '@asgardeo/vue'
 
-const requireAuth = (to: RouteLocationNormalized, from: RouteLocationNormalized, next: any) => {
+const requireAuth = (
+  to: RouteLocationNormalized,
+  from: RouteLocationNormalized,
+  next: any,
+): void => {
   const { state } = useAsgardeo()
 
   if (state.isAuthenticated) {
@@ -34,38 +43,45 @@ const requireAuth = (to: RouteLocationNormalized, from: RouteLocationNormalized,
   }
 }
 
-const routes = [
+interface RouteConfig {
+  beforeEnter?: (to: RouteLocationNormalized, from: RouteLocationNormalized, next: any) => void
+  component: any
+  name: string
+  path: string
+}
+
+const routes: RouteConfig[] = [
   {
-    path: '/',
-    name: 'Home',
     component: Home,
+    name: 'Home',
+    path: '/',
   },
   {
-    path: '/profile',
-    name: 'Profile',
+    beforeEnter: requireAuth,
     component: Profile,
-    beforeEnter: requireAuth,
+    name: 'Profile',
+    path: '/profile',
   },
   {
-    path: '/resource',
-    name: 'Resources',
+    beforeEnter: requireAuth,
     component: Resources,
-    beforeEnter: requireAuth,
+    name: 'Resources',
+    path: '/resource',
   },
   {
-    path: '/settings',
-    name: 'Settings',
+    beforeEnter: requireAuth,
     component: Settings,
-    beforeEnter: requireAuth,
+    name: 'Settings',
+    path: '/settings',
   },
   {
-    path: '/:pathMatch(.*)*',
-    name: 'NotFound',
     component: NotFound,
+    name: 'NotFound',
+    path: '/:pathMatch(.*)*',
   },
 ]
 
-const router = createRouter({
+const router: Router = createRouter({
   history: createWebHistory(),
   routes,
 })
