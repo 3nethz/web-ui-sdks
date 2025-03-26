@@ -90,7 +90,7 @@
 .welcome-heading {
   font-size: 2rem;
   margin-bottom: 0.5rem;
-  font-family: sans-serif;
+  font-family: Gilmer;
 }
 
 .welcome-subheading {
@@ -155,7 +155,7 @@
   gap: 0.5rem;
   text-align: center;
   font-weight: normal;
-  font-family: 'Inter', 'Arial', sans-serif;
+  font-family: 'Gilmer';
   word-wrap: break-word;
 }
 
@@ -175,7 +175,7 @@
   margin-bottom: 1rem;
   text-align: center;
   line-height: 1.6;
-  font-family: sans-serif;
+  font-family: Gilmer;
   color: #777;
 }
 .button-group {

@@ -300,7 +300,7 @@ const hideToken = () => {
 
 .token-text {
   word-break: break-all;
-  font-family: monospace;
+  font-family: Gilmer;
   font-size: 0.75rem;
   margin: 0;
 }

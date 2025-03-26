@@ -22,7 +22,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-family: sans-serif;
+  font-family: Gilmer;
   padding: 20px;
   width: 100%;
   height: auto;
@@ -50,7 +50,7 @@
 
 .table-container {
   text-align: center;
-  font-family: sans-serif;
+  font-family: Gilmer;
   width: 100%;
 }
 
