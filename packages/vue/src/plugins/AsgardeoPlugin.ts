@@ -167,6 +167,7 @@ export const asgardeoPlugin: Plugin = {
       httpRequestAll: (configs: HttpRequestConfig[]): Promise<HttpResponse<any>[]> =>
         AuthClient.httpRequestAll(configs),
       isAuthenticated: (): Promise<boolean> => AuthClient.isAuthenticated(),
+      isSignedIn: state.isAuthenticated,
       on: (hook: Hooks, callback: (response?: any) => void, id?: string): void => {
         if (hook === Hooks.CustomGrant && id) {
           AuthClient.on(hook, callback, id);

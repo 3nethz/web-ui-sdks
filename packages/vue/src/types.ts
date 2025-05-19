@@ -103,6 +103,7 @@ export interface AuthContextInterface {
   httpRequest(config: HttpRequestConfig): Promise<HttpResponse<any>>;
   httpRequestAll(configs: HttpRequestConfig[]): Promise<HttpResponse<any>[]>;
   isAuthenticated(): Promise<boolean>;
+  isSignedIn: boolean,
   on(hook: Hooks.CustomGrant, callback: (response?: any) => void, id: string): void;
   on(hook: Exclude<Hooks, Hooks.CustomGrant>, callback: (response?: any) => void): void;
   on(hook: Hooks, callback: (response?: any) => void, id?: string): void;

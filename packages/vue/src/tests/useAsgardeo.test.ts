@@ -47,6 +47,7 @@ describe('useAsgardeo', () => {
     httpRequest: vi.fn().mockResolvedValue({} as HttpResponse<any>),
     httpRequestAll: vi.fn().mockResolvedValue([{} as HttpResponse<any>]),
     isAuthenticated: vi.fn().mockResolvedValue(true),
+    isSignedIn: true,
     on: vi.fn(),
     refreshAccessToken: vi.fn().mockResolvedValue({} as BasicUserInfo),
     requestCustomGrant: vi.fn(),
